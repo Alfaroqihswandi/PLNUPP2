@@ -1,0 +1,26 @@
+/* styles.css */
+.stage-bar .stage-button {
+    background-color: #00ACC1;
+    color: white;
+    border: none;
+    margin: 0 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+.daily-section,
+.monthly-section {
+    background-color: #00ACC1;
+    color: white;
+    padding: 50px 0;
+    font-size: 24px;
+}
+
+.process-bar .process-button {
+    background-color: #00ACC1;
+    color: white;
+    border: none;
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
