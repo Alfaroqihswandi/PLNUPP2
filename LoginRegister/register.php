@@ -1,14 +1,9 @@
 <?php
 $error = ''; // Initialize the error variable
 $showPopup = false; // Variable to control popup display
-
 include('Service/Database.php');
-if (isset($_POST ['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-}
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
     $confirmPassword = $_POST["confirmPassword"];
@@ -16,8 +11,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($password != $confirmPassword) {
         $error = "Password tidak sama.";
     } else {
-        // Registration successful
-        $showPopup = true; // Set to true to show popup
+        // Enkripsi password sebelum disimpan ke database
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        // Query untuk menyimpan user ke dalam database
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        
+        // Prepare statement untuk menghindari SQL injection
+        $stmt = $conn->prepare($sql);
+        if ($stmt) {
+            $stmt->bind_param("ss", $username, $hashedPassword); // Binding parameter
+            if ($stmt->execute()) {
+                // Pendaftaran berhasil
+                $showPopup = true;
+            } else {
+                $error = "Error: " . $stmt->error;
+            }
+            $stmt->close();
+        } else {
+            $error = "Error: " . $conn->error;
+        }
+        
     }
 }
 ?>
@@ -154,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="logo">
             Register
         </div>
-        <form id="registerForm" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" id="registerForm" method="POST">
             <div class="form-group">
                 <input type="text" class="form-control" id="username" placeholder="Username" required name="username">
             </div>
@@ -173,7 +187,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="error" id="passwordError">
                 <?php echo $error; ?>
             </div>
-            <button class="btn" type="submit">Register</button>
+            <button class="btn" type="submit" name="register">Register</button>
         </form>
     </div>
 
