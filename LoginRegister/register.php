@@ -2,6 +2,12 @@
 $error = ''; // Initialize the error variable
 $showPopup = false; // Variable to control popup display
 
+include('Service/Database.php');
+if (isset($_POST ['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
