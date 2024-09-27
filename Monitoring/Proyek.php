@@ -84,7 +84,7 @@
             <img src="logo.png" alt="Logo" class="w-24 h-auto object-contain"> <!-- Logo -->
         </div>
         <div class="text-center flex-1">
-            <h1 class="text-4xl font-extrabold font-poppins"> Proyek</h1> <!-- Centered Title -->
+            <h1 class="text-4xl font-extrabold font-poppins">Monitoring Proyek</h1> <!-- Centered Title -->
         </div>
     </div>
 </header>
