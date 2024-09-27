@@ -79,13 +79,16 @@
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
     <!-- Header -->
     <header class="p-6 bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg">
-        <div class="flex justify-between items-center">
+    <div class="flex items-center">
+        <div class="ml-auto">
             <img src="logo.png" alt="Logo" class="w-24 h-auto object-contain"> <!-- Logo -->
-            <div class="flex-1 text-center">
-                <h1 class="text-4xl font-extrabold font-poppins">Monitoring Proyek</h1> <!-- Centered Title -->
-            </div>
         </div>
-    </header>
+        <div class="text-center flex-1">
+            <h1 class="text-4xl font-extrabold font-poppins"> Proyek</h1> <!-- Centered Title -->
+        </div>
+    </div>
+</header>
+
 
     <!-- Input Section -->
     <div class="flex justify-center mt-4">
