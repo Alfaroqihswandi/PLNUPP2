@@ -30,9 +30,17 @@
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
     <!-- Header -->
+
     <header class="p-6 bg-blue-700 text-white">
         <h1 class="text-3xl font-bold text-center">ROW (Right of Way)</h1>
     </header>
+
+     <!-- Button Kembali -->
+     <div class="mb-6">
+            <a href="Proyek.php" class="bg-gray-600 text-white py-1 px-4 rounded hover:bg-gray-700">
+                Kembali
+            </a>
+        </div>
 
     <!-- Form Input -->
     <section class="container mx-auto mt-8 p-6 bg-white shadow-lg">
@@ -51,8 +59,8 @@
                 <input type="text" id="status" name="status" class="border border-gray-300 p-2 rounded-md w-full" required>
             </div>
             <div class="flex space-x-4">
-                <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Submit</button>
-                <button type="button" onclick="window.history.back();" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Back</button>
+                <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Simpan</button>
+                <button type="button" onclick="window.history.back();" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Kembali</button>
             </div>
         </form>
     </section>
