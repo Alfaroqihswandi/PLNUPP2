@@ -135,6 +135,7 @@
             <button onclick="window.location.href='stringing.php'" class="bg-white text-blue-700 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300 shadow-md">STRINGING</button>
             <button onclick="window.location.href='final_check.php'" class="bg-white text-blue-700 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300 shadow-md">FINAL CHECK</button>
             <button onclick="window.location.href='commissioning.php'" class="bg-white text-blue-700 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300 shadow-md">COMMISSIONING</button>
+            <button onclick="window.location.href='commissioning.php'" class="bg-white text-blue-700 px-4 py-2 rounded-full hover:bg-gray-200 transition duration-300 shadow-md">TDS</button>
         </div>
     </footer>
 </body>
