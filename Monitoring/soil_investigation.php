@@ -20,6 +20,7 @@
                 boring: form.boring.checked,
                 progress: form.progress.value,
                 keterangan: form.keterangan.value,
+                date: new Date().toLocaleDateString() // Tambahkan tanggal secara otomatis
             };
 
             if (editIndex !== null) {
@@ -40,13 +41,14 @@
                 const row = document.createElement("tr");
                 row.className = "border-b border-gray-200";
                 row.innerHTML = `
-                    <td class="py-3 px-4">${data.number}</td>
-                    <td class="py-3 px-4">${data.location}</td>
-                    <td class="py-3 px-4">${data.sondir ? 'Yes' : 'No'}</td>
-                    <td class="py-3 px-4">${data.boring ? 'Yes' : 'No'}</td>
-                    <td class="py-3 px-4">${data.progress}</td>
-                    <td class="py-3 px-4">${data.keterangan}</td>
-                    <td class="py-3 px-4 text-right">
+                    <td class="py-3 px-4 text-center">${data.number}</td>
+                    <td class="py-3 px-4 text-center">${data.location}</td>
+                    <td class="py-3 px-4 text-center">${data.sondir ? 'Yes' : 'No'}</td>
+                    <td class="py-3 px-4 text-center">${data.boring ? 'Yes' : 'No'}</td>
+                    <td class="py-3 px-4 text-center">${data.progress}</td>
+                    < td class="py-3 px-4 text-center">${data.keterangan}</td>
+                    <td class="py-3 px-4 text-center">${data.date}</td>
+                    <td class="py-3 px-4 text-center">
                         <button onclick="editData(${index})" class="bg-yellow-400 text-white py-1 px-3 rounded hover:bg-yellow-500">Edit</button>
                         <button onclick="deleteData(${index})" class="bg-red-600 text-white py-1 px-3 rounded hover:bg-red-700">Hapus</button>
                     </td>
@@ -71,6 +73,43 @@
             investigations.splice(index, 1);
             displayData();
         }
+        function editData(index) {
+    const data = investigations[index];
+    const form = document.getElementById("investigationForm");
+    form.number.value = data.number;
+    form.location.value = data.location;
+    form.sondir.checked = data.sondir;
+    form.boring.checked = data.boring;
+    form.progress.value = data.progress;
+    form.keterangan.value = data.keterangan;
+    editIndex = index; // Menyimpan index yang sedang diedit
+    document.querySelector('button[type="submit"]').textContent = 'Update Data'; // Mengubah teks tombol submit menjadi "Update Data"
+}
+
+function saveData(event) {
+    event.preventDefault();
+    const form = event.target;
+    const newData = {
+        number: form.number.value,
+        location: form.location.value,
+        sondir: form.sondir.checked,
+        boring: form.boring.checked,
+        progress: form.progress.value,
+        keterangan: form.keterangan.value,
+        date: new Date().toLocaleDateString() // Tambahkan tanggal secara otomatis
+    };
+
+    if (editIndex !== null) {
+        investigations[editIndex] = newData; // Mengganti data lama dengan yang baru
+        editIndex = null; // Reset editIndex setelah penyimpanan
+        document.querySelector('button[type="submit"]').textContent = 'Simpan Data'; // Mengubah teks tombol submit menjadi "Simpan Data"
+    } else {
+        investigations.push(newData); // Menambahkan data baru jika bukan dalam mode edit
+    }
+
+    form.reset();
+    displayData();
+}
     </script>
 </head>
 
@@ -131,21 +170,22 @@
                     Simpan Data
                 </button>
             </div>
-        </form>
+        </ form>
 
         <!-- Output Table -->
         <section class="container mx-auto mt-8 p-6 bg-white shadow-lg">
             <h2 class="text-2xl font-semibold mb-4">Soil Investigation Data</h2>
-            <table class="min-w-full bg-white table-auto">
+            <table class="min-w-full bg-white table-auto mx-auto">
                 <thead class="bg-gray-800 text-white">
                     <tr>
-                        <th class="py-2">Tower Number</th>
-                        <th class="py-2">Location</th>
-                        <th class="py-2">Sondir</th>
-                        <th class="py-2">Boring</th>
-                        <th class="py-2">Progress</th>
-                        <th class="py-2">Keterangan</th>
-                        <th class="py-2">Actions</th>
+                        <th class="py-2 text-center">Tower Number</th>
+                        <th class="py-2 text-center">Location</th>
+                        <th class="py-2 text-center">Sondir</th>
+                        <th class="py-2 text-center">Boring</th>
+                        <th class="py-2 text-center">Progress</th>
+                        <th class="py-2 text-center">Keterangan</th>
+                        <th class="py-2 text-center">Date</th>
+                        <th class="py-2 text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="results">
