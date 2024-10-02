@@ -192,9 +192,9 @@ logoBulat.addEventListener('click', () => {
   statusMenu.classList.toggle('show');
 });
 
-logoutButton.addEventListener('click', () => {
+Button.addEventListener('click', () => {
     if (confirm("Apakah Anda yakin ingin logout?")) {
-    statusMenu.classList.remove('show');
+    statusMenu.logoutclassList.remove('show');
     logoutMenu.classList.add('show');
     setTimeout(function() {
       window.location.href = 'tes.php';
@@ -211,7 +211,7 @@ cancelLogout.addEventListener('click', () => {
 
 const viewMoreButton = document.getElementById('view-more-button');
 viewMoreButton.addEventListener('click', () => {
-  window.location.href = '/monitoring/proyek.php';
+  window.location.href = '/PLNUPP2/Monitoring/proyek.php';
 });
 
   </script>
