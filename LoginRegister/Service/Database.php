@@ -1,16 +1,17 @@
 <?php
-// File: Service/Database.php
 
-$servername = "localhost";
-$username = "root";
+$hostname = "localhost" ;
+$username = "root" ;
 $password = "";
-$dbname = "monitoring"; // Ganti dengan nama database yang digunakan
+$dbname = "monitoring";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$db = new mysqli($hostname, username: $username, password: $password, database: $dbname);
+if ($db->connect_error) {
+    echo"Koneksi Database Rusak";
+    die("Error");
 }
+echo"Koneksi Berhasil!";
+
+$sql = "";
+
 ?>
