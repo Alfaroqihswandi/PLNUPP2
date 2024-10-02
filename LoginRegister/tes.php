@@ -1,6 +1,7 @@
 <?php
 // PHP code to handle form submission
 $error = ''; // Define the $error variable
+$success = ''; // Define the $success variable
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
@@ -11,7 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Password harus minimal 8 karakter dan mengandung angka.";
     } else {
         // Login successful, redirect to dashboard or perform other actions
-        echo "Login berhasil!";
+        $success = "Login berhasil!";
+        // Redirect to dashboard
+        header('Location: dashboard.php');
+        exit;
     }
 }
 ?>
@@ -117,6 +121,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin-bottom: 10px;
         }
 
+        .success {
+            color: green;
+            margin-bottom: 10px;
+        }
+
         .show-password {
             position: absolute;
             top: 50%;
@@ -153,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form id="loginForm" method="post">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" required name="username" style="padding-right: 40px;">
-        </div>
+        </ div>
         <div class="form-group">
             <input type="password" class="form-control" id="password" placeholder="Password" required name="password" style="padding-right: 40px;">
             <span class="show-password" onclick="togglePassword()">
@@ -162,6 +171,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="error" id="passwordError">
             <?php echo $error; ?>
+        </div>
+        <div class="success" id="passwordSuccess">
+            <?php echo $success; ?>
         </div>
         <button class="btn" type="submit">Login</button>
         <div class="forgot-password" style="margin-top: 20px;">
