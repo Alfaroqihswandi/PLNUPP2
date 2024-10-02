@@ -46,7 +46,7 @@
                     <td class="py-3 px-4 text-center">${data.sondir ? 'Yes' : 'No'}</td>
                     <td class="py-3 px-4 text-center">${data.boring ? 'Yes' : 'No'}</td>
                     <td class="py-3 px-4 text-center">${data.progress}</td>
-                    < td class="py-3 px-4 text-center">${data.keterangan}</td>
+                    <td class="py-3 px-4 text-center">${data.keterangan}</td>
                     <td class="py-3 px-4 text-center">${data.date}</td>
                     <td class="py-3 px-4 text-center">
                         <button onclick="editData(${index})" class="bg-yellow-400 text-white py-1 px-3 rounded hover:bg-yellow-500">Edit</button>
